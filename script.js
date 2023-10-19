@@ -2,26 +2,50 @@ const ageInYearsPlaceholder = document.getElementById("yearsPlaceholder");
 const ageInMonthsPlaceholder = document.getElementById("monthsPlaceholder");
 const ageInDaysPlaceholder = document.getElementById("daysPlaceholder");
 
+function validateDate(day, month, year) {
+  const date = new Date();
+  const currentDay = date.getDate();
+  const currentMonth = date.getMonth() + 1;
+  const currentYear = date.getFullYear();
+
+  if (
+    isNaN(day) ||
+    isNaN(month) ||
+    isNaN(year) ||
+    day < 1 ||
+    day > 31 ||
+    month < 1 ||
+    month > 12 ||
+    year > currentYear ||
+    (year === currentYear && month > currentMonth) ||
+    (year === currentYear && month === currentMonth && day > currentDay)
+  ) {
+    return false;
+  }
+  const daysInMonth = new Date(year, month, 0).getDate();
+
+  return day <= daysInMonth;
+}
+
 //calculating current day
 function ageCalculator() {
-  const date = new Date();
-
-  let currentDay = date.getDate();
-  let currentMonth = date.getMonth() + 1;
-  let currentYear = date.getFullYear();
-
-  let currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
-  console.log(currentDate);
-
-  //function to retrieve day value from the form
-  // Prevent the form from submitting normally
-
   const day = document.getElementById("day");
   const month = document.getElementById("month");
   const year = document.getElementById("year");
-  const dayValue = day.value;
-  const monthValue = month.value;
-  const yearValue = year.value;
+
+  if (day === "" || month === "" || year === "") {
+    alert("Please enter all the values");
+    return;
+  }
+
+  const dayValue = parseInt(day, 10);
+  const monthValue = parseInt(month, 10);
+  const yearValue = parseInt(year, 10);
+
+  if (!validateDate(dayValue, monthValue, yearValue)) {
+    alert("Invalid date format!");
+    return;
+  }
 
   //age in years, months, and days
   let ageInYears = currentYear - yearValue;
