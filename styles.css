@@ -1,0 +1,52 @@
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif; /* Optional: Set a preferred font */
+}
+
+#ageCalc {
+  background-color: white;
+  padding: 20px; /* Add padding for spacing */
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  text-align: center; /* Center the form content */
+  max-width: 600px; /* Set a maximum width for the form */
+  margin: 0 auto; /* Center the form on the page */
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row; /* Display input fields in a single row */
+  justify-content: space-between; /* Add spacing between input fields */
+  align-items: flex-start; /* Align items to the top */
+}
+
+.form-group {
+  flex: 1; /* Distribute equal width among form groups */
+  margin-right: 10px; /* Add spacing between form groups */
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="number"] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%; /* Make the inputs expand to fill the available space */
+}
+
+button[type="submit"] {
+  background-color: #0078e4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #005eb2;
+}
