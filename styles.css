@@ -28,6 +28,7 @@ body {
 label {
   font-weight: bold;
   display: block;
+  font-size: 1rem;
 }
 
 input[type="number"] {
@@ -45,10 +46,19 @@ button[type="submit"] {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  margin-top: 0.5rem;
   font-size: 16px;
   cursor: pointer;
 }
 
 button[type="submit"]:hover {
   background-color: #005eb2;
+}
+
+#ageInYears,
+#ageInMonths,
+#ageInDays {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1rem;
 }
