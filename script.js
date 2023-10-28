@@ -1,3 +1,18 @@
+function updateAgeWithTransition(placeholder, newValue) {
+  const newSpan = document.createElement("span");
+  newSpan.textContent = newValue;
+
+  // Set its class for CSS transition
+  newSpan.className = "placeholder";
+
+  // Replace the placeholder with the new element
+  placeholder.parentNode.replaceChild(newSpan, placeholder);
+
+  setTimeout(function () {
+    newSpan.style.opacity = 1; // Change opacity to 1 from 0
+  }, 10);
+}
+
 myFunction = (event) => {
   event.preventDefault();
 
@@ -39,9 +54,9 @@ myFunction = (event) => {
   }
 
   // Update the placeholders with the calculated values
-  yearsPlaceholder.textContent = ageInYears;
-  monthsPlaceholder.textContent = ageInMonths;
-  daysPlaceholder.textContent = ageInDays;
+  updateAgeWithTransition(yearsPlaceholder, ageInYears);
+  updateAgeWithTransition(monthsPlaceholder, ageInMonths);
+  updateAgeWithTransition(daysPlaceholder, ageInDays);
 };
 
 // Attach the event listener to the form
