@@ -1,27 +1,46 @@
+function resetPlaceholders() {
+  const placeholders = document.querySelectorAll(".placeholder");
+  placeholders.forEach((placeholder) => {
+    // Reset the text content and opacity
+    placeholder.textContent = "--";
+    placeholder.style.opacity = 0;
+  });
+}
+
 function updateAgeWithTransition(placeholder, newValue) {
   const newSpan = document.createElement("span");
   newSpan.textContent = newValue;
 
   // Set its class for CSS transition
-  newSpan.className = "placeholder";
+  newSpan.className = "placeholder transition-opacity";
+
+  // Set initial opacity to 0 for the transition
+  newSpan.style.opacity = 0;
 
   // Replace the placeholder with the new element
   placeholder.parentNode.replaceChild(newSpan, placeholder);
 
+  // Trigger the transition by setting opacity to 1 with a slight delay
   setTimeout(function () {
-    newSpan.style.opacity = 1; // Change opacity to 1 from 0
+    newSpan.style.opacity = 1;
   }, 10);
+
+  console.log(newValue);
 }
 
 myFunction = (event) => {
   event.preventDefault();
 
+  resetPlaceholders(); // Reset the placeholders when the form is submitted
+
+  // Your age calculation logic remains the same
   const day = document.getElementById("day").value;
   const month = document.getElementById("month").value;
   const year = document.getElementById("year").value;
 
-  const currentDate = new Date();
+  console.log(day, month, year);
 
+  const currentDate = new Date();
   const birthDate = new Date(year, month - 1, day);
 
   let ageInYears = currentDate.getFullYear() - birthDate.getFullYear();
@@ -54,9 +73,10 @@ myFunction = (event) => {
   }
 
   // Update the placeholders with the calculated values
-  updateAgeWithTransition(yearsPlaceholder, ageInYears);
-  updateAgeWithTransition(monthsPlaceholder, ageInMonths);
-  updateAgeWithTransition(daysPlaceholder, ageInDays);
+  const placeholders = document.querySelectorAll(".placeholder");
+  updateAgeWithTransition(placeholders[0], ageInYears);
+  updateAgeWithTransition(placeholders[1], ageInMonths);
+  updateAgeWithTransition(placeholders[2], ageInDays);
 };
 
 // Attach the event listener to the form

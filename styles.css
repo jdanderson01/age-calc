@@ -1,10 +1,10 @@
 body {
-  background-color: #f2f2f2;
+  background-color: #871c4e;
   font-family: Arial, sans-serif;
 }
 
 #container {
-  background-color: white;
+  background-color: #d290aa;
   max-width: 600px;
   margin: 1.5rem auto;
   padding: 20px;
@@ -65,8 +65,11 @@ button[type="submit"]:hover {
   margin-top: 1rem;
 }
 
-span.placeholder {
-  opacity: 0;
+.placeholder {
+  color: #871c4e;
+}
+
+.transition-opacity {
+  opacity: 1;
   transition: opacity 0.5s ease-in-out;
-  color: black;
 }
